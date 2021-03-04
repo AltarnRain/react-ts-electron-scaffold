@@ -1,0 +1,9 @@
+{
+    "extends": "../../tsconfig_base.json",
+    "compilerOptions": {
+        "module": "AMD",
+        "moduleResolution": "Node",
+        "jsx": "react",
+        "outDir": "../../js/Frontend"
+    }
+}
