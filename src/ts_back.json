@@ -1,0 +1,11 @@
+{
+    "extends": "./tsconfig_base.json",
+    "compilerOptions": {
+        "module": "CommonJS",
+        "moduleResolution": "Node",
+        "outDir": "../js"
+    },
+    "include": [
+        "./Backend/**/*"
+    ]
+}

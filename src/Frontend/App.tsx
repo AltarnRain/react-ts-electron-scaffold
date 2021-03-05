@@ -1,18 +1,26 @@
 import React, { ReactElement, useEffect, useState } from "react";
+import { api } from "./Api";
+
+
 export function App(): ReactElement {
 
     const [text, setText] = useState<string[]>([]);
 
     useEffect(() => {
-        // ipcRenderer.on("getDrives", (event, args: string[])=> {
-        //     setText(args);
-        // });
+        api().receive("fromMain", (...data: any[]) => {
+            setText(data[0]);
+        });
     }, []);
+
+    function click(): void {
+        api().send("toMain");
+    }
 
     return (
         <div>
             <div>Hello from react</div>
+            <button onClick={click}>Click me</button>
             <div>{text}</div>
         </div >
     )
-}
+};
