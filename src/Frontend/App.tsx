@@ -1,6 +1,6 @@
 import React, { ReactElement, useEffect, useState } from "react";
 import { api } from "./Api";
-
+import * as fs from "fs";
 
 export function App(): ReactElement {
 
@@ -21,6 +21,6 @@ export function App(): ReactElement {
             <div>Hello from react</div>
             <button onClick={click}>Click me</button>
             <div>{text}</div>
-        </div >
+        </div>
     )
 };
