@@ -1,23 +1,19 @@
-const {
-    contextBridge,
-    ipcRenderer
-} = require("electron");
+import { contextBridge, ipcRenderer } from "electron";
+import { Channels } from "./Channels";
+
 
 contextBridge.exposeInMainWorld(
-    "api", {
-        send: (channel: string, data: any[]) => {
-            // whitelist channels
-            let validChannels = ["toMain"];
-            if (validChannels.includes(channel)) {
+    "api",
+    {
+        send: <T>(channel: string, data: T[]) => {
+            if (Channels.send.indexOf(channel) > -1) {
                 ipcRenderer.send(channel, data);
             }
         },
-        receive: (channel: string, func: (...data: any[]) => void) => {
-            let validChannels = ["fromMain"];
-            if (validChannels.includes(channel)) {
-                // Deliberately strip event as it includes `sender` 
-                ipcRenderer.on(channel, (event, ...args) => func(...args));
+        receive: <T>(channel: string, callback: (...data: T[]) => void) => {
+            if (Channels.receive.indexOf(channel) > -1) {
+                // Do not allow  the event object in the web part.
+                ipcRenderer.on(channel, (_, ...args) => callback(...args));
             }
         }
-    }
-);
+    });

@@ -7,8 +7,8 @@ export function App(): ReactElement {
     const [text, setText] = useState<string[]>([]);
 
     useEffect(() => {
-        api().receive("fromMain", (...data: any[]) => {
-            setText(data[0]);
+        api().receive<string>("fromMain", (data) => {
+            setText(data);
         });
     }, []);
 

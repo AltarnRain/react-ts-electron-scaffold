@@ -1,4 +1,4 @@
 export interface IApi {
-    send: (channel: string, ...data: any[]) => void;
-    receive: (channel: string, func: (...data: any[]) => void) => void;
+    send<T>(channel: string, data?: T[]): void
+    receive<T>(channel: string, func: (data: T[]) => void): void;
 }
