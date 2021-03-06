@@ -5,17 +5,22 @@
  */
 
 import { ResponseModel } from "../Typings";
-import { showError } from "./ShowError";
 
 /**
  * Module:          HandleResponse
  * Responsibility:  Simple response handler.
  */
 
-export function handleResponse<R>(response: ResponseModel<R>, callBack: (value: R) => void): void {
+export function handleResponse<R>(
+    response: ResponseModel<R>,
+    succes: (value: R) => void,
+    error?: (error: string | undefined) => void): void {
+
     if (response.success) {
-        callBack(response.model);
+        succes(response.model);
     } else {
-        showError(response.error);
+        if (typeof error === "function") {
+            error(response.error);
+        }
     }
 }

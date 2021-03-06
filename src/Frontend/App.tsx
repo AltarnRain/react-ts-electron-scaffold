@@ -27,7 +27,8 @@ export function App(): ReactElement {
     async function click2(): Promise<void> {
         handleResponse(
             await sendAndReceive<string>("Error"),
-            (x) => setText(x));
+            (x) => setText(x),
+            (x) => alert(x));
     }
 
     async function click3(): Promise<void> {
@@ -46,5 +47,5 @@ export function App(): ReactElement {
             <button onClick={click3}>Click me for a send and receive with parameters</button>
             <div>{text2}</div>
         </div>
-    )
+    );
 }
