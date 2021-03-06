@@ -10,24 +10,14 @@
  */
 
 import React, { ReactElement, useState } from "react";
-import { api } from "./Api";
+import { sendAndReceive } from "./Api";
 
 export function App(): ReactElement {
 
     const [text, setText] = useState("");
 
-    // useEffect(() => {
-    //     api().receive<string>("fromMain", (data) => {
-    //         if (data.success && data.model !== undefined) {
-    //             setText(data.model);
-    //         } else {
-    //             setText("There was an error");
-    //         }
-    //     });
-    // }, []);
-
     async function click(): Promise<void> {
-        const response = await api().sendAndReceive<string>("SayHello");
+        const response = await sendAndReceive<string>("SayHello");
         if (response.success) {
             setText(response.model);
         }

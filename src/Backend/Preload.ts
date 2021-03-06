@@ -9,8 +9,6 @@
  * Responsibility:  Sets up the API the Render process can use via the API object defined on window
  */
 
-/* eslint-disable @typescript-eslint/no-explicit-any */
-
 import { contextBridge } from "electron";
 import { IApi } from "../Typings";
 import { receive, send, sendAndReceive } from "./ChannelHandlers";
