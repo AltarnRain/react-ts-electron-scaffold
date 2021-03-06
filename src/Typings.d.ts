@@ -22,7 +22,8 @@ export interface ResponseModel<T> {
 /**
  * Valid channels.
  */
-export type Channels = "SayHello";
+export type Channels =
+    "Succes" | "Error" | "PassParameters";
 
 /**
  * Definition for the API object available in the Render process.
@@ -30,5 +31,5 @@ export type Channels = "SayHello";
 export interface IApi {
     send<T>(channel: Channels, request?: T): void
     receive<T>(channel: Channels, func: (model: ResponseModel<T>) => void): void;
-    sendAndReceive<R>(channel: Channels, request?: T): Promise<ResponseModel<R>>
+    sendAndReceive<T>(channel: Channels, ...args: any[]): Promise<ResponseModel<T>>
 }

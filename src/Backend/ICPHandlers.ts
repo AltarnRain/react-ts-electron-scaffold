@@ -14,24 +14,39 @@
  * Responsibility:  Handlers ICP requests from the frontend.
  */
 
-import { ipcMain, IpcMainEvent } from "electron";
+import { ipcMain } from "electron";
 import { Channels, ResponseModel } from "../Typings";
 
 export function registerICPHandlers(): void {
-    register("SayHello", (event) => {
-        event.sender.send("SayHello", replySuccess("hello"));
-    });
+    register("Succes", () => replySuccess("Succes"));
+    register("Error", () => replyFail("Error"));
+    register("PassParameters", passParameters);
 }
 
-function replySuccess<T>(model: T): ResponseModel<T>[] {
-    return [{
+function replySuccess<T>(model: T): ResponseModel<T> {
+    return {
         success: true,
         model,
-    }]
+    }
+}
+
+function replyFail<T>(error: string): ResponseModel<T> {
+    return {
+        success: false,
+        model: {} as T,
+        error,
+    }
+}
+
+function passParameters(v1: string, v2: string): ResponseModel<string> {
+    return replySuccess(v1 + v2);
 }
 
 // OI: Wrapper function for registering a listener but only for known channels.
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-function register(channel: Channels, listener: (event: IpcMainEvent, ...args: any[]) => void): void {
-    ipcMain.on(channel, listener);
+function register<T>(channel: Channels, func: (...args: any[]) => ResponseModel<T>): void {
+    ipcMain.on(channel, (event, args) => {
+        const result = func(...args);
+        event.sender.send(channel, result);
+    });
 }

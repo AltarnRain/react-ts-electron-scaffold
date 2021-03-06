@@ -9,7 +9,7 @@
  * Responsibility:  Lets the frontend use the api object.
  */
 
- import { IApi } from "../Typings";
+import { IApi } from "../Typings";
 
 /**
  * Grabs the api object from window and returns it typed as IApi.
@@ -20,4 +20,4 @@ function api(): IApi {
     return (window as any).api;
 }
 
-export const { send, sendAndReceive, receive } = api();
+export const { send, receive, sendAndReceive } = api();

@@ -11,7 +11,7 @@
 
 import { contextBridge } from "electron";
 import { IApi } from "../Typings";
-import { receive, send, sendAndReceive } from "./ChannelHandlers";
+import { receive, send, sendAndReceive } from "./APIFunctions";
 
 // Setup api object. Cannot be a class (I tried). The IApi interface is used by the back and frontend to type the exposed methods.
 const api: IApi = {

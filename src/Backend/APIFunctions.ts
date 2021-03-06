@@ -13,7 +13,9 @@ import { ipcRenderer } from "electron";
 import { Channels, ResponseModel } from "../Typings";
 
 const Whitelist: Channels[] = [
-    "SayHello",
+    "Error",
+    "Succes",
+    "PassParameters",
 ]
 
 /**
@@ -22,12 +24,12 @@ const Whitelist: Channels[] = [
  * @param {T} requestModel An optional request model
  * @returns {Prmose<ResponseModel<T>>} A promise with a response model.
  */
-export function sendAndReceive<T>(channel: Channels, requestModel?: T): Promise<ResponseModel<T>> {
+export function sendAndReceive<T>(channel: Channels, ...args: any): Promise<ResponseModel<T>> {
     return new Promise((resolve) => {
         if (Whitelist.indexOf(channel) > -1) {
             // Register a once listen action to handle the reply.
-            ipcRenderer.once(channel, (_, args) => resolve(args[0]));
-            ipcRenderer.send(channel, [requestModel]);
+            ipcRenderer.once(channel, (_, responseModel) => resolve(responseModel));
+            ipcRenderer.send(channel, args);
         }
     });
 }
@@ -37,10 +39,10 @@ export function sendAndReceive<T>(channel: Channels, requestModel?: T): Promise<
  * @param {Channels} channel A channel.
  * @param {T} requestModel A request model.
  */
-export function send<T>(channel: Channels, requestModel?: T): void {
+export function send<T>(channel: Channels, ...args: T[]): void {
     // If the channel is white listed, send the data to the backend.
     if (Whitelist.indexOf(channel) > -1) {
-        ipcRenderer.send(channel, [requestModel]);
+        ipcRenderer.send(channel, args);
     }
 }
 
