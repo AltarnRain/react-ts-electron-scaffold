@@ -1,13 +1,28 @@
+/**
+ * @preserve Copyright 2019-2020 Onno Invernizzi.
+ * This source code is subject to terms and conditions.
+ * See LICENSE.MD.
+ */
+
+/**
+ * Module:          App
+ * Responsibility:  React app.
+ */
+
 import React, { ReactElement, useEffect, useState } from "react";
 import { api } from "./Api";
 
 export function App(): ReactElement {
 
-    const [text, setText] = useState<string[]>([]);
+    const [text, setText] = useState("");
 
     useEffect(() => {
         api().receive<string>("fromMain", (data) => {
-            setText(data);
+            if (data.success && data.model !== undefined) {
+                setText(data.model);
+            } else {
+                setText("There was an error");
+            }
         });
     }, []);
 

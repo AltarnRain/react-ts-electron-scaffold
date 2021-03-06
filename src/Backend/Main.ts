@@ -1,5 +1,17 @@
+/**
+ * @preserve Copyright 2019-2020 Onno Invernizzi.
+ * This source code is subject to terms and conditions.
+ * See LICENSE.MD.
+ */
+
+/**
+ * Module:          Main
+ * Responsibility:  Main process for the backend aka the main process.
+ */
+
 import { app, BrowserWindow, ipcMain } from "electron";
 import path from "path";
+import { ResponseModel } from "../Models/ResponseModel";
 
 async function createWindow(): Promise<void> {
 
@@ -46,5 +58,12 @@ app.on("activate", () => {
 });
 
 ipcMain.on("toMain", (event) => {
-  event.sender.send("fromMain", ["Hello"]);
+  event.sender.send("fromMain", replySuccess("hello"));
 })
+
+function replySuccess<T>(model: T): ResponseModel<T>[] {
+    return [{
+        success: true,
+        model,
+    }]
+}

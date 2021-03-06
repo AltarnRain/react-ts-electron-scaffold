@@ -1,9 +1,7 @@
 {
-    "extends": "./tsconfig_base.json",
+    "extends": "../tsconfig.json",
     "compilerOptions": {
-        "module": "CommonJS",
-        "moduleResolution": "Node",
-        "outDir": "../js"
+        "module": "CommonJS"
     },
     "include": [
         "./Backend/**/*"

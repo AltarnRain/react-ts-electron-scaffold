@@ -1,3 +1,14 @@
+/**
+ * @preserve Copyright 2019-2020 Onno Invernizzi.
+ * This source code is subject to terms and conditions.
+ * See LICENSE.MD.
+ */
+
+/**
+ * Module:          Start
+ * Responsibility:  Starts App.
+ */
+
 import React from "react";
 import { render } from "react-dom";
 import { App } from "./App";
