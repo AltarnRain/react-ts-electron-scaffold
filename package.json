@@ -5,7 +5,7 @@
   "main": "./js/Backend/Main.js",
   "scripts": {
     "start": "electron ./js/Backend/Main.js",
-    "test": "jest --watch --rootDir=./js/Tests",
+    "test": "jest --watch --rootDir=./src/Tests",
     "lint": "eslint ./src/**/*"
   },
   "keywords": [],
