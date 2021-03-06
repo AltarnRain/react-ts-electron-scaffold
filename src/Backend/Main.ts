@@ -3,7 +3,6 @@ import path from "path";
 
 async function createWindow(): Promise<void> {
 
-
     const preload = path.join(app.getAppPath(), "../Backend/Preload.js");
 
     const win = new BrowserWindow({
@@ -46,6 +45,6 @@ app.on("activate", () => {
     }
 });
 
-ipcMain.on("toMain", (event, ...args: any[]) => {
+ipcMain.on("toMain", (event) => {
   event.sender.send("fromMain", ["Hello"]);
 })

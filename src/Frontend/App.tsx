@@ -1,6 +1,5 @@
 import React, { ReactElement, useEffect, useState } from "react";
 import { api } from "./Api";
-import * as fs from "fs";
 
 export function App(): ReactElement {
 
@@ -23,4 +22,4 @@ export function App(): ReactElement {
             <div>{text}</div>
         </div>
     )
-};
+}

@@ -1,7 +1,6 @@
 import { contextBridge, ipcRenderer } from "electron";
 import { Channels } from "./Channels";
 
-
 contextBridge.exposeInMainWorld(
     "api",
     {

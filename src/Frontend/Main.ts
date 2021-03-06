@@ -1,4 +1,3 @@
-
 const nodeFolder = "../../node_modules/"
 
 // Configure packages.
