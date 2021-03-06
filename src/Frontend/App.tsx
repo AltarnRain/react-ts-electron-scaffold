@@ -9,25 +9,28 @@
  * Responsibility:  React app.
  */
 
-import React, { ReactElement, useEffect, useState } from "react";
+import React, { ReactElement, useState } from "react";
 import { api } from "./Api";
 
 export function App(): ReactElement {
 
     const [text, setText] = useState("");
 
-    useEffect(() => {
-        api().receive<string>("fromMain", (data) => {
-            if (data.success && data.model !== undefined) {
-                setText(data.model);
-            } else {
-                setText("There was an error");
-            }
-        });
-    }, []);
+    // useEffect(() => {
+    //     api().receive<string>("fromMain", (data) => {
+    //         if (data.success && data.model !== undefined) {
+    //             setText(data.model);
+    //         } else {
+    //             setText("There was an error");
+    //         }
+    //     });
+    // }, []);
 
-    function click(): void {
-        api().send("toMain");
+    async function click(): Promise<void> {
+        const response = await api().sendAndReceive<string>("SayHello");
+        if (response.success) {
+            setText(response.model);
+        }
     }
 
     return (

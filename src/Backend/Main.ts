@@ -9,9 +9,9 @@
  * Responsibility:  Main process for the backend aka the main process.
  */
 
-import { app, BrowserWindow, ipcMain } from "electron";
+import { app, BrowserWindow } from "electron";
 import path from "path";
-import { ResponseModel } from "../Models/ResponseModel";
+import { registerICPHandlers } from "./ICPHandlers";
 
 async function createWindow(): Promise<void> {
 
@@ -57,13 +57,4 @@ app.on("activate", () => {
     }
 });
 
-ipcMain.on("toMain", (event) => {
-  event.sender.send("fromMain", replySuccess("hello"));
-})
-
-function replySuccess<T>(model: T): ResponseModel<T>[] {
-    return [{
-        success: true,
-        model,
-    }]
-}
+registerICPHandlers();
