@@ -1,3 +1,5 @@
 @echo Building frontend...
-cd src
-tsc -p ts_front.json --watch
+cd src\frontend
+tsc --watch
+cd..
+cd..

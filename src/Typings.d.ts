@@ -33,3 +33,7 @@ export interface IApi {
     receive<T>(channel: Channels, func: (model: ResponseModel<T>) => void): void;
     sendAndReceive<T>(channel: Channels, ...args: any[]): Promise<ResponseModel<T>>
 }
+
+export interface IIntermediate {
+    async succes(param1: string, param2: number): Promise<ResponseModel<string>>
+}

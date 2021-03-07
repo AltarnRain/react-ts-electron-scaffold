@@ -27,7 +27,7 @@ function replySuccess<T>(model: T): ResponseModel<T> {
     return {
         success: true,
         model,
-    }
+    };
 }
 
 function replyFail<T>(error: string): ResponseModel<T> {
@@ -35,7 +35,7 @@ function replyFail<T>(error: string): ResponseModel<T> {
         success: false,
         model: {} as T,
         error,
-    }
+    };
 }
 
 function passParameters(v1: string, v2: string): ResponseModel<string> {

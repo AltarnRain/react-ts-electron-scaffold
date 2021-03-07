@@ -29,7 +29,7 @@ async function createWindow(): Promise<void> {
             contextIsolation: true,
             preload: preload,
         },
-    })
+    });
 
     // Ensures the dev console opens automatically when you start the application.
     win.webContents.toggleDevTools();
@@ -41,19 +41,22 @@ async function createWindow(): Promise<void> {
 
 // when the app is ready electron is in a position to create the window.
 app.on("ready", async () => {
+
+    import("./RegisterICPMainCalls");
+    
     await createWindow();
-})
+});
 
 // Closes the app when all windows are closed.
 app.on("window-all-closed", () => {
     if (process.platform !== "darwin") {
-        app.quit()
+        app.quit();
     }
 });
 
 app.on("activate", () => {
     if (BrowserWindow.getAllWindows().length === 0) {
-        createWindow()
+        createWindow();
     }
 });
 

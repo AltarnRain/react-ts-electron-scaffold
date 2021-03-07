@@ -1,4 +1,5 @@
 @echo Building backend...
-cd src
-tsc -p ts_back.json --watch
+cd src\backend
+tsc --watch
+cd ..
 cd ..

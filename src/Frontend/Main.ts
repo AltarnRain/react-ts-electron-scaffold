@@ -9,7 +9,7 @@
  * Responsibility:  Main module. Configures require and kicks off the application.
  */
 
-const nodeFolder = "../../node_modules/"
+const nodeFolder = "../../node_modules/";
 
 // Configure packages.
 requirejs.config(({
