@@ -1,5 +1,5 @@
 @echo Building frontend...
 cd src\frontend
-tsc --watch
+call tsc --watch
 cd..
 cd..

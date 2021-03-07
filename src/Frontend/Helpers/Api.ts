@@ -9,15 +9,9 @@
  * Responsibility:  Lets the frontend use the api object.
  */
 
-import { IApi } from "../Typings";
+import { IApi } from "../../IApi";
 
 /**
  * Grabs the api object from window and returns it typed as IApi.
  */
-function api(): IApi {
-    // OI: Only way to access the window object is using any.
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    return (window as any).api;
-}
 
-export const { send, receive, sendAndReceive } = api();

@@ -11,7 +11,6 @@
 
 import { app, BrowserWindow } from "electron";
 import path from "path";
-import { registerICPHandlers } from "./ICPHandlers";
 
 async function createWindow(): Promise<void> {
 
@@ -42,8 +41,8 @@ async function createWindow(): Promise<void> {
 // when the app is ready electron is in a position to create the window.
 app.on("ready", async () => {
 
-    import("./RegisterICPMainCalls");
-    
+    // Lazy load this module. This registers all ICP main calls the frontend can do.
+    import("./Helpers/RegisterICPMainCalls");
     await createWindow();
 });
 
@@ -59,5 +58,3 @@ app.on("activate", () => {
         createWindow();
     }
 });
-
-registerICPHandlers();

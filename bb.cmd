@@ -1,5 +1,5 @@
 @echo Building backend...
 cd src\backend
-tsc --watch
+call tsc --watch
 cd ..
 cd ..
