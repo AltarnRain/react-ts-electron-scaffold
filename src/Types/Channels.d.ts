@@ -4,10 +4,11 @@
  * See LICENSE.MD.
  */
 
+import { IMediator } from "./IMediator";
+
 /**
  * Module:          Channels
  * Responsibility:  Type valid channels.
  */
 
-export type Channels =
-    "Succes" | "Error" | "PassParameters";
+export type Channels = keyof IMediator;
