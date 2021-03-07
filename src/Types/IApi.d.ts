@@ -17,5 +17,5 @@ import { Channels } from "./Channels";
  */
 
 export interface IApi {
-    sendAndReceive<T>(channel: Channels, ...args: any[]): Promise<ResponseModel<T>>;
+    sendAndReceive(channel: Channels, ...args: any[]): Promise<ResponseModel<any>>;
 }
