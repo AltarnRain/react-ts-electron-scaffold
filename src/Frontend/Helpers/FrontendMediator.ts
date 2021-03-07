@@ -7,7 +7,7 @@ const sendAndReceive = ((window as any).api as IApi).sendAndReceive;
 
 class FrontendMediator implements IMediator {
     public async doCall(param1: string, param2: number): Promise<ResponseModel<string>> {
-        return await sendAndReceive<string>("Succes", param1, param2);
+        return await sendAndReceive<string>("doCall", param1, param2);
     }
 }
 
