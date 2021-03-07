@@ -17,7 +17,7 @@ export function App(): ReactElement {
 
     const [text1, setText1] = useState("");
 
-    async function click4(): Promise<void> {
+    async function click(): Promise<void> {
         handleResponse(
             await Intermediate.doCall("My value", 1234),
             (x) => setText1(x)
@@ -27,7 +27,7 @@ export function App(): ReactElement {
     return (
         <div style={{ display: "flex", flexDirection: "column" }} >
             <div>Hello from react</div>
-            <button onClick={click4}>Click</button>
+            <button onClick={click}>Click</button>
             <div>{text1}</div>
         </div>
     );
