@@ -1,14 +1,12 @@
 import { ResponseModel } from "../../Types/ResponseModel";
 import { IMediator as IMediator } from "../../Types/IMediator";
+import { listDrives } from "../Drive/ListDrives";
 
 export const BackendMediator: IMediator = {
-    doCall: async(param1: string, param2: number): Promise<ResponseModel<string>> => {
-        // Do the needful
-        const m = `${param1}_${param2}`;
-
+    listDrives: async(): Promise<ResponseModel<string[]>> => {
         return {
             success: true,
-            model: m,
+            model: await listDrives(),
         };
     }
 };

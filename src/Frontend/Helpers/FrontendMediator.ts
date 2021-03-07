@@ -10,7 +10,7 @@ const sendAndReceive = ((window as any).api as IApi).sendAndReceive;
  * This object is used for all communication with the backend.
  */
 export const FrontendMediator : IMediator  = {
-    doCall: async(param1: string, param2: number): Promise<ResponseModel<any>> => {
-        return await sendAndReceive("doCall", param1, param2);
+    listDrives: async(): Promise<ResponseModel<any>> => {
+        return await sendAndReceive("listDrives");
     }
 };

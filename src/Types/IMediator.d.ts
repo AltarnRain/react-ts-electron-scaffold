@@ -14,5 +14,5 @@
 import { ResponseModel } from "./ResponseModel";
 
 export interface IMediator {
-    async doCall(param1: string, param2: number): Promise<ResponseModel<string>>;
+    async listDrives(): Promise<ResponseModel<string[]>>;
 }

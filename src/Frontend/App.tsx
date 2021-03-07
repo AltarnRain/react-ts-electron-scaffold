@@ -9,26 +9,16 @@
  * Responsibility:  React app.
  */
 
-import React, { ReactElement, useState } from "react";
-import { handleResponse } from "./Helpers/HandleResponse";
-import { FrontendMediator } from "./Helpers/FrontendMediator";
+import React, { ReactElement } from "react";
+import { Drives } from "./Helpers/Components/Drives";
+import { MainView } from "./Helpers/Components/MainView";
 
 export function App(): ReactElement {
 
-    const [text1, setText1] = useState("");
-
-    async function click(): Promise<void> {
-        handleResponse(
-            await FrontendMediator.doCall("My value", 1234),
-            (x) => setText1(x)
-        );
-    }
-
     return (
-        <div style={{ display: "flex", flexDirection: "column" }} >
-            <div>Hello from react</div>
-            <button onClick={click}>Click</button>
-            <div>{text1}</div>
-        </div>
+        <MainView>
+            <Drives />
+
+        </MainView >
     );
 }
