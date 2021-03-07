@@ -37,6 +37,9 @@ Base settings shared by ts_back and ts_front.
 ## Safety
 It is very easy to make an unsafe electron application by letting node functionality slip into the Render code. That is not possible with this scaffold.
 
-And API object is setup which exposes a `send` and `receive` method. Both use ICP to do their thing.
+And API object is setup which exposes a `sendAndreceive` method that uses ICP to communicate.
 
-Send uses `icpRenderer` to send arguments via a whitelisted `channel` to the main process. Receive does the reverse, it listens.
+This method is wrapped in a `FrontendMediator` class which derives from the `IMediator` interface.
+
+The backend also has a mediator class called `BackendMediator` and it also derives from the `IMediator` interface. With a bit of JS magic it is possible
+to link these classes together. This means every call to the backend is done knowing which parameters are required and what kind of response you're going to get.
