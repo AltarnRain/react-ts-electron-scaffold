@@ -9,16 +9,24 @@
  * Responsibility:  React app.
  */
 
-import React, { ReactElement } from "react";
+import React, { ReactElement, useState } from "react";
+import { Content } from "./Components/Content";
 import { Drives } from "./Components/Drives";
 import { MainView } from "./Components/MainView";
+import { ColumnDisplay } from "./Components/ColumnDisplay";
 
 export function App(): ReactElement {
 
+    const [folder, setFolder] = useState("");
+
+    function selectDrive(drive: string): void {
+        setFolder(drive);
+    }
+
     return (
         <MainView>
-            <Drives />
-
+            <Drives selectDrive={selectDrive} />
+            <Content folder={folder} />
         </MainView >
     );
 }

@@ -8,15 +8,33 @@ import React, { ReactElement, useEffect, useState } from "react";
 import { Button } from "reactstrap";
 import { FrontendMediator } from "../Helpers/FrontendMediator";
 import { handleResponse } from "../Helpers/HandleResponse";
+import { ColumnDisplay } from "./ColumnDisplay";
 
 /**
  * Module:          Drives
  * Responsibility:  Lists the drives on the system
  */
 
-export function Drives(): ReactElement {
+function DriveButton(props: { drive: string; selectDrive: (drive: string) => void }): ReactElement {
+
+    function click(): void {
+        props.selectDrive(props.drive);
+    }
+
+    return (
+        <Button onClick={click}>{props.drive}</Button>
+    );
+}
+
+export function Drives(props: {
+    selectDrive(drive: string): void
+}): ReactElement {
 
     const [drives, setDrives] = useState<string[]>([]);
+
+    function selectDrive(drive: string): void {
+        props.selectDrive(drive);
+    }
 
     useEffect(() => {
         (async () => {
@@ -26,11 +44,14 @@ export function Drives(): ReactElement {
             );
         })();
     }, []);
+
     return (
-        <div style={{display:"flex", flexDirection: "column"}}>
-            {
-                drives.map(d => <Button key={d} >{d}</Button>)
-            }
-        </div>
+        <>
+            <ColumnDisplay>
+                {
+                    drives.map(d => <DriveButton drive={d} selectDrive={selectDrive} key={d} />)
+                }
+            </ColumnDisplay>
+        </>
     );
 }
