@@ -11,7 +11,7 @@
 
 import { app, BrowserWindow } from "electron";
 import path from "path";
-import { registerICPMainCalls } from "./Helpers/RegisterICPMainCalls";
+import { registerICPMainCalls } from "./ICP/RegisterICPMainCalls";
 
 async function createWindow(): Promise<void> {
 
