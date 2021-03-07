@@ -1,6 +1,10 @@
 # React TypeScript Electron Scaffold
 This is my setup for an Electron application that uses react and typescript. Jest is installed for testing.
 
+ContextIsolation is on, Node Integration is off. 
+
+Communication from the frontend to the backend is handled exclusively via ICP.
+
 # Installation
 npm install
 
@@ -20,19 +24,21 @@ You'll hit every breakpoint.
 # Project setup
 
 ## Src
-Contains all source code and folders as well as two typescript configuration files.
+Contains all source code and typings.
 
-## ts_back.json
-Compile options for the backend. 
+### Frontend
+Contains all the front end code as well as a tsconfig.json file with output AMD
 
-## ts_front.json
-Compile options for the frontend
+### Backend
+Contains all the backend code as well as a tsconfig.json file with output common JS.
 
-## tsconfig_base.json
-Base settings shared by ts_back and ts_front.
+## Development
+Make sure you NEVER import a frontend code file in the backend and vice versa. These projects cannot share code files. D.TS files for shared typings are fine
+as these are never compiled.
 
-> Backend is compiled to CommonJS, the frontend is compiled to AMD.
+The reason is that the frontend uses AMD and require for module resolution but the backend uses CommonJS. By interchanging files between the frontend and backend you'll see backend files being compiled as AMD and frontend files being compiled as Common JS. That. Will. Not. Work.
 
+This solution keeps things light and simple. There's bundler like Webpack that handles 'the details'.
 
 ## Safety
 It is very easy to make an unsafe electron application by letting node functionality slip into the Render code. That is not possible with this scaffold.
