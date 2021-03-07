@@ -10,8 +10,8 @@
  */
 
 import React, { ReactElement } from "react";
-import { Drives } from "./Helpers/Components/Drives";
-import { MainView } from "./Helpers/Components/MainView";
+import { Drives } from "./Components/Drives";
+import { MainView } from "./Components/MainView";
 
 export function App(): ReactElement {
 

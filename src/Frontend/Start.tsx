@@ -12,6 +12,7 @@
 import React from "react";
 import { render } from "react-dom";
 import { App } from "./App";
+import "popper.js";
 
 export function start(): void {
     // Grab the div node we want to mount our main app on and render.

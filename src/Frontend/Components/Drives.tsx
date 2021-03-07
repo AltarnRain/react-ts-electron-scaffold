@@ -5,8 +5,9 @@
  */
 
 import React, { ReactElement, useEffect, useState } from "react";
-import { FrontendMediator } from "../FrontendMediator";
-import { handleResponse } from "../HandleResponse";
+import { Button } from "reactstrap";
+import { FrontendMediator } from "../Helpers/FrontendMediator";
+import { handleResponse } from "../Helpers/HandleResponse";
 
 /**
  * Module:          Drives
@@ -24,13 +25,12 @@ export function Drives(): ReactElement {
                 (v) => setDrives(v),
             );
         })();
-
     }, []);
     return (
-        <>
+        <div style={{display:"flex", flexDirection: "column"}}>
             {
-                drives.map(d => <div>{d}</div>)
+                drives.map(d => <Button key={d} >{d}</Button>)
             }
-        </>
+        </div>
     );
 }

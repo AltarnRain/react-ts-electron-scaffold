@@ -15,11 +15,20 @@ const nodeFolder = "../../node_modules/";
 requirejs.config(({
     paths: {
         "react": `${nodeFolder}react/umd/react.development`,
-        "react-dom": `${nodeFolder}/react-dom/umd/react-dom.development`
+        "react-dom": `${nodeFolder}react-dom/umd/react-dom.development`,
+        "popper": `${nodeFolder}popper.js/dist/umd/popper`,
+        "react-popper": `${nodeFolder}react-popper/dist/index.umd`,
+        "reactstrap": `${nodeFolder}reactstrap/dist/reactstrap`,
+    },
+    map: {
+        "*": {
+            // Map popper.js to 'popper. Paths do not support a name with a period.'
+            "popper.js": "popper",
+        },
     }
 }));
 
 // Require start and get things going!
-requirejs(["Start"],(module: typeof import("./Start")) => {
+requirejs(["Start"], (module: typeof import("./Start")) => {
     module.start();
 });
