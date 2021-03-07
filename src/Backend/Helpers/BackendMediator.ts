@@ -1,5 +1,5 @@
-import { ResponseModel } from "../../ResponseModel";
-import { IMediator as IMediator } from "../../IMediator";
+import { ResponseModel } from "../../Types/ResponseModel";
+import { IMediator as IMediator } from "../../Types/IMediator";
 
 class BackendMediatorInternal implements IMediator {
     public async doCall(param1: string, param2: number): Promise<ResponseModel<string>> {

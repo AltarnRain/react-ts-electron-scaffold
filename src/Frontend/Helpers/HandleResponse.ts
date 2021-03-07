@@ -4,7 +4,7 @@
  * See LICENSE.MD.
  */
 
-import { ResponseModel } from "../../ResponseModel";
+import { ResponseModel } from "../../Types/ResponseModel";
 
 /**
  * Module:          HandleResponse

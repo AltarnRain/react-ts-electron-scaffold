@@ -1,6 +1,6 @@
 import { ipcMain } from "electron";
-import { Channels } from "../../Channels";
-import { IMediator } from "../../IMediator";
+import { Channels } from "../../Types/Channels";
+import { IMediator } from "../../Types/IMediator";
 import { BackendMediator } from "./BackendMediator";
 
 // Register 'Succes' call.
