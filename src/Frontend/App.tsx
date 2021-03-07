@@ -11,7 +11,7 @@
 
 import React, { ReactElement, useState } from "react";
 import { handleResponse } from "./Helpers/HandleResponse";
-import { Intermediate } from "./Helpers/FrontendMediator";
+import { FrontendMediator } from "./Helpers/FrontendMediator";
 
 export function App(): ReactElement {
 
@@ -19,7 +19,7 @@ export function App(): ReactElement {
 
     async function click(): Promise<void> {
         handleResponse(
-            await Intermediate.doCall("My value", 1234),
+            await FrontendMediator.doCall("My value", 1234),
             (x) => setText1(x)
         );
     }
