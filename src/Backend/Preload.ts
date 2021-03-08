@@ -29,7 +29,7 @@ contextBridge.exposeInMainWorld("api", api);
  * @param {T} requestModel An optional request model
  * @returns {Prmose<ResponseModel<T>>} A promise with a response model.
  */
-export function sendAndReceive<T>(channel: Channels, ...args: any): Promise<ResponseModel<T>> {
+export function sendAndReceive(channel: Channels, ...args: any): Promise<ResponseModel<any>> {
     return new Promise((resolve) => {
         // Register a once listen action to handle the reply.
         ipcRenderer.once(channel, (_, responseModel) => resolve(responseModel));
