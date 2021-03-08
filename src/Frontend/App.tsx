@@ -13,7 +13,6 @@ import React, { ReactElement, useState } from "react";
 import { Content } from "./Components/Content";
 import { Drives } from "./Components/Drives";
 import { MainView } from "./Components/MainView";
-import { ColumnDisplay } from "./Components/ColumnDisplay";
 
 export function App(): ReactElement {
 

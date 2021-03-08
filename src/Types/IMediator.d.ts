@@ -15,4 +15,5 @@ import { ResponseModel } from "./ResponseModel";
 
 export interface IMediator {
     async listDrives(): Promise<ResponseModel<string[]>>;
+    async listContent(folder: string): Promise<ResponseModel<ContentModel[]>>;
 }

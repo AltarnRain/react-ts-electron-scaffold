@@ -4,7 +4,7 @@
  * See LICENSE.MD.
  */
 
-import { ListFolderContent } from "../Backend/Drive/ListFolderContent";
+import { listFolderContent } from "../Backend/Drive/ListFolderContent";
 
 /**
  * Module:          ListFolderContent
@@ -14,7 +14,7 @@ import { ListFolderContent } from "../Backend/Drive/ListFolderContent";
 describe("list folder content", () => {
     it("should return a list of files", async (done) => {
         // Act - Requires a folder with a subfolder and a file.
-        const contents = await ListFolderContent("D:/TestFolder");
+        const contents = await listFolderContent("D:/TestFolder");
 
         // Assert
         expect(contents.length).toBe(2);

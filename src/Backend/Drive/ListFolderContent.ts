@@ -13,26 +13,40 @@ import { ContentModel } from "../../Types/ContentModel";
  * Responsibility:  Lists the contents of a folder.
  */
 
-export async function ListFolderContent(folder: string): Promise<ContentModel[]> {
+export async function listFolderContent(folder: string): Promise<ContentModel[]> {
     return new Promise((resolve) => {
-        readdir(folder, (error, files) => {
-            if (error) {
-                resolve([]);
-            } else {
-                const returnValue: ContentModel[] = [];
-                for (const file of files) {
+        if (folder === "") {
+            resolve([]);
+        } else {
 
-                    const fullPath = path.join(folder, file);
-                    const stats = lstatSync(fullPath);
-
-                    returnValue.push({
-                        name: file,
-                        isFolder: stats.isDirectory(),
-                    });
-                }
-
-                resolve(returnValue);
+            if (folder.endsWith(":")) {
+                folder += "\\";
             }
-        });
+
+            readdir(folder, (error, files) => {
+                if (error) {
+                    resolve([]);
+                } else {
+                    const returnValue: ContentModel[] = [];
+                    for (const file of files) {
+
+                        const fullPath = path.join(folder, file);
+
+                        try {
+                            const stats = lstatSync(fullPath);
+
+                            returnValue.push({
+                                name: file,
+                                isFolder: stats.isDirectory(),
+                            });
+                        } catch {
+                            // Do nothing. Not all folder are accedible
+                        }
+                    }
+
+                    resolve(returnValue);
+                }
+            });
+        }
     });
 }

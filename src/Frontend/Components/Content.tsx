@@ -4,7 +4,11 @@
  * See LICENSE.MD.
  */
 
-import React, { ReactElement } from "react";
+import React, { ReactElement, useEffect, useState } from "react";
+import { ContentModel } from "../../Types/ContentModel";
+import { FrontendMediator } from "../Helpers/FrontendMediator";
+import { handleResponse } from "../Helpers/HandleResponse";
+import { ContentItem } from "./ContentItem";
 
 /**
  * Module:          Content
@@ -13,10 +17,22 @@ import React, { ReactElement } from "react";
 
 export function Content(props: { folder: string }): ReactElement {
 
+    const [content, setContent] = useState<ContentModel[]>([]);
+
+    useEffect(() => {
+        (async () => {
+            handleResponse(
+                await FrontendMediator.listContent(props.folder),
+                (x) => setContent(x),
+            );
+        })();
+    },[props.folder]);
+
     return (
-        <>
-            <div>Selected:</div>
-            <div>{props.folder}</div>
-        </>
+        <div style={{display:"flex", flexDirection:"column"}}>
+            {
+                content.map((c, i) => <ContentItem key={i} item={c} />)
+            }
+        </div>
     );
 }

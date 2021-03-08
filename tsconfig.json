@@ -9,7 +9,9 @@
         "rootDir": "./src/",
         "jsx": "react",
         "moduleResolution": "Node",
-        "outDir": "./js"
+        "outDir": "./js",
+        "noUnusedLocals": true,
+        "noEmitOnError": true
     },
     "exclude": [
         "node_modules",

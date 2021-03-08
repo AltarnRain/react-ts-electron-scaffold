@@ -32,7 +32,7 @@ async function createWindow(): Promise<void> {
     });
 
     // Ensures the dev console opens automatically when you start the application.
-    win.webContents.toggleDevTools();
+    // win.webContents.toggleDevTools();
 
     // Load index.html from (./js)/Frontend
     // Note: this automatically sets the root path of the 'web' application. So, ensure index.html is in the root of your frontend code's output.
