@@ -6,7 +6,7 @@
 
 /**
  * Module:          IApi
- * Responsibility:  Type definition for the API object places on the window object so the frontend can use ICP to request.
+ * Responsibility:  Type definition for the API object placed on the window object so the frontend can use ICP to request.
  */
 
 import { ResponseModel } from "./ResponseModel";

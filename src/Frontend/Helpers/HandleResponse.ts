@@ -4,14 +4,14 @@
  * See LICENSE.MD.
  */
 
-import { ResponseModel } from "../../Types/ResponseModel";
-import { SuccesResponseModel } from "../../Types/SuccesResponseModel";
-import { ErrorResponseModel } from "../../Types/ErrorResponseModel";
-
 /**
  * Module:          HandleResponse
  * Responsibility:  Simple response handler.
  */
+
+import { ResponseModel } from "../../Types/ResponseModel";
+import { SuccesResponseModel } from "../../Types/SuccesResponseModel";
+import { ErrorResponseModel } from "../../Types/ErrorResponseModel";
 
 /**
  * handleResponse

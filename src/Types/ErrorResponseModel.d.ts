@@ -9,7 +9,7 @@
  */
 
 /**
- * Definition for a response model.
+ * Definition for a response model with an error.
  */
  export interface ErrorResponseModel {
     /**

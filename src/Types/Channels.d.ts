@@ -13,5 +13,7 @@ import { IMediator } from "./IMediator";
 
 /**
  * Channels are typed to keys of IMediator. This means they're unique are implicitely bound to a send and receive call.
+ * It also means typo's for channels are impossible since the code that handles this requires a channel to be known
+ * as a property in IMediator.
  */
 export type Channels = keyof IMediator;
