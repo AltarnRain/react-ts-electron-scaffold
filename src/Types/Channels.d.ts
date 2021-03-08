@@ -11,4 +11,7 @@ import { IMediator } from "./IMediator";
  * Responsibility:  Type valid channels.
  */
 
+/**
+ * Channels are typed to keys of IMediator. This means they're unique are implicitely bound to a send and receive call.
+ */
 export type Channels = keyof IMediator;

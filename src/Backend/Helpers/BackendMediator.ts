@@ -7,7 +7,7 @@ export const BackendMediator: IMediator = {
         const m = `${param1}_${param2}`;
 
         return {
-            success: true,
+            succes: true,
             model: m,
         };
     }

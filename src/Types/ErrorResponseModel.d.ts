@@ -5,25 +5,20 @@
  */
 /**
  * Module:          Typings
- * Responsibility:  Define a response model. Every response from the Backend (=Main process) is provided using a ResponseModel.
+ * Responsibility:  Define a succes response model. Every response from the Backend (=Main process) is provided using a ResponseModel.
  */
 
 /**
  * Definition for a response model.
  */
-export interface ResponseModel<T> {
+ export interface ErrorResponseModel {
     /**
      * True means everything worked, false means there is an error.
      */
     succes: boolean;
 
     /**
-     * A model of type T. Can be anything.
+     * The error that occured.
      */
-    model?: T;
-
-    /**
-     * An error message if an error occured.
-     */
-    error?: string;
+    error: string;
 }
