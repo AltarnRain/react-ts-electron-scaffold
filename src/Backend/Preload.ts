@@ -21,7 +21,7 @@ const api: IApi = {
 
 // Use the context bridge to define 'api' on the window object in the browser. Assigning directly to the window object in here
 // does not work because the window object when this file loads is NOT the window object in the browser.
-contextBridge.exposeInMainWorld("api", api);
+contextBridge.exposeInMainWorld("__api_el", api);
 
 /**
  * send a request object and response immediately.
