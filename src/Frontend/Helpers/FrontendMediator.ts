@@ -14,7 +14,7 @@ import { IMediator } from "../../Types/IMediator";
 import { ResponseModel } from "../../Types/ResponseModel";
 
 // Grab the sendAndReceive function from the window object. Places there by the Preload.
-const sendAndReceive = ((window as any).__api_el as IApi).sendAndReceive;
+const sendAndReceive = ((window as any)["40a05040-68be-48b0-859d-cd50b8ad6efa"] as IApi).sendAndReceive;
 
 /**
  * FrontendMediator
