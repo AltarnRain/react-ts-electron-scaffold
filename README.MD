@@ -67,3 +67,13 @@ This method is wrapped in a `FrontendMediator` class which derives from the `IMe
 
 The backend also has a mediator class called `BackendMediator` and it also derives from the `IMediator` interface. With a bit of JS magic it is possible
 to link these classes together. This means every call to the backend is done knowing which parameters are required and what kind of response you're going to get.
+
+## Communicating with the backend.
+Every call to the backend should be done using the FrontendMediator object. This object's content is generated using an array that, itself is generated.
+Each time you add a call to IMediator run Generate.cmd and the FrontendMediator will have a method to send a call to the backend.
+
+This updates ./src/Frontend/Generated/Channels.ts and if you're using bf TypeScript will automatically compile this file.
+
+Channels.ts exports an array of every key in IMediator. Since FrontendMediator only calls the Backend using a channel and some parameters this code can be generated just fine.
+
+It's the Backend that does the heavy lifting.

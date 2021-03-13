@@ -1,9 +1,18 @@
-import { InterfaceDeclaration, Project, ScriptTarget, VariableDeclarationKind } from "ts-morph";
+/**
+ * @preserve Copyright 2019-2021 Onno Invernizzi.
+ * This source code is subject to terms and conditions.
+ * See LICENSE.MD.
+ */
 
+/**
+ * Module:          GenerateChannels
+ * Responsibility:  Generates an array with valid channels.
+ */
+
+import { InterfaceDeclaration, Project, VariableDeclarationKind } from "ts-morph";
+
+// Specify a project.
 const project = new Project({
-    compilerOptions: {
-        target: ScriptTarget.ES2016,
-    },
     tsConfigFilePath: "./tsconfig.json",
     skipAddingFilesFromTsConfig: true,
 });

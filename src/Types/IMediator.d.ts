@@ -11,11 +11,16 @@
  *                  are typesafe.
  */
 
+/**
+ * DO NOT RENAME THIS FILE OR EXTEND THIS INTERFACE.
+ * This interface is used to type the front and backend calls but it is also used to generate code.
+ * Src/Generated/Channels.ts is build using this interface. If you rename this file THAT WILL NO LONGER WORK!
+ */
+
 import { ResponseModel } from "./ResponseModel";
 
 export interface IMediator {
     doCall: (param1: string, param2: number) => Promise<ResponseModel<string>>;
 
     multiple: (a: number, b:number) => Promise<ResponseModel<number>>;
-    multiple2: (a: number, b:number) => Promise<ResponseModel<number>>;
 }

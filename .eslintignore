@@ -1,2 +1,4 @@
 *.json
-src/Frontend/Generated/**.*
+*.js
+src/Frontend/Generated/**/*
+CodeGeneration/**/*
