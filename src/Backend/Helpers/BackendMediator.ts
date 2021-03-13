@@ -20,5 +20,11 @@ export const BackendMediator: IMediator = {
             succes: true,
             model: m,
         };
+    },
+    multiple: async(a, b): Promise<ResponseModel<number>> => {
+        return {
+            succes: true,
+            model: a * b,
+        };
     }
 };

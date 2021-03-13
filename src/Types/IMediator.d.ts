@@ -15,4 +15,6 @@ import { ResponseModel } from "./ResponseModel";
 
 export interface IMediator {
     async doCall(param1: string, param2: number): Promise<ResponseModel<string>>;
+
+    async multiple(a: number, b:number): Promise<ResponseModel<number>>;
 }

@@ -15,11 +15,11 @@ import { FrontendMediator } from "./Helpers/FrontendMediator";
 
 export function App(): ReactElement {
 
-    const [text1, setText1] = useState("");
+    const [text1, setText1] = useState(0);
 
     async function click(): Promise<void> {
         handleResponse(
-            await FrontendMediator.doCall("My value", 1234),
+            await FrontendMediator.multiple(5, 1234),
             (x) => setText1(x)
         );
     }

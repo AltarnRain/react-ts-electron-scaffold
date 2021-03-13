@@ -10,7 +10,7 @@
  */
 
 import { contextBridge, ipcRenderer } from "electron";
-import { Channels } from "../Types/Channels";
+import { Channel } from "../Types/Channel";
 import { IApi } from "../Types/IApi";
 import { ResponseModel } from "../Types/ResponseModel";
 
@@ -25,11 +25,11 @@ contextBridge.exposeInMainWorld("40a05040-68be-48b0-859d-cd50b8ad6efa", api);
 
 /**
  * send a request object and response immediately.
- * @param {Channels} channel A channel
+ * @param {Channel} channel A channel
  * @param {T} requestModel An optional request model
  * @returns {Prmose<ResponseModel<T>>} A promise with a response model.
  */
-export function sendAndReceive(channel: Channels, ...args: any): Promise<ResponseModel<any>> {
+export function sendAndReceive(channel: Channel, ...args: any): Promise<ResponseModel<any>> {
     return new Promise((resolve) => {
         // Register a once listen action to handle the reply.
         ipcRenderer.once(channel, (_, responseModel) => resolve(responseModel));
