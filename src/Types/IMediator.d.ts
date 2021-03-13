@@ -13,6 +13,10 @@
 
 import { ResponseModel } from "./ResponseModel";
 
+/**
+ * Implement any call you want to implement here. If you add a call, run 'Generate.cmd' from the root of the project.
+ * This ensures the FrontendMediator object is generated properly.
+ */
 export interface IMediator {
     async listDrives: () => Promise<ResponseModel<string[]>>;
     async listContent: (folder: string) => Promise<ResponseModel<ContentModel[]>>;
