@@ -10,8 +10,8 @@
  */
 
 import React, { ReactElement, useState } from "react";
-import { handleResponse } from "./Helpers/HandleResponse";
-import { FrontendMediator } from "./Helpers/FrontendMediator";
+import { handleResponse } from "./ICP/HandleResponse";
+import { FrontendMediator } from "./ICP/FrontendMediator";
 
 export function App(): ReactElement {
 
