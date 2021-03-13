@@ -6,16 +6,7 @@
         "skipLibCheck": true,
         "forceConsistentCasingInFileNames": true,
         "inlineSourceMap": true,
-        "rootDir": "./src/",
-        "jsx": "react",
         "moduleResolution": "Node",
-        "outDir": "./js",
-        "noUnusedLocals": true,
-        "noEmitOnError": true
-    },
-    "exclude": [
-        "node_modules",
-        "**/node_modules/*",
-        "CodeGeneration",
-    ]
+        "module": "CommonJS"
+    }
 }

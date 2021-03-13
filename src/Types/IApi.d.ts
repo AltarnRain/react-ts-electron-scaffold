@@ -6,16 +6,16 @@
 
 /**
  * Module:          IApi
- * Responsibility:  Type definition for the API object places on the window object so the frontend can use ICP to request.
+ * Responsibility:  Type definition for the API object placed on the window object so the frontend can use ICP to request.
  */
 
 import { ResponseModel } from "./ResponseModel";
-import { Channels } from "./Channels";
+import { Channel } from "./Channel";
 
 /**
  * Definition for the API object available in the Render process.
  */
 
 export interface IApi {
-    sendAndReceive(channel: Channels, ...args: any[]): Promise<ResponseModel<any>>;
+    sendAndReceive(channel: Channel, ...args: any[]): Promise<ResponseModel<any>>;
 }

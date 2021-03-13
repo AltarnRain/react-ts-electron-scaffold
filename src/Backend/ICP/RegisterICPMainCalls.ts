@@ -10,7 +10,7 @@
  */
 
 import { ipcMain } from "electron";
-import { Channels } from "../../Types/Channels";
+import { Channel } from "../../Types/Channel";
 import { BackendMediator } from "./BackendMediator";
 
 export function registerICPMainCalls(): void {
@@ -21,14 +21,14 @@ export function registerICPMainCalls(): void {
     // for it. This also means we can expand our IMediator interface, update our classes
     // and never having to worry about registering a call.
     for (const key in BackendMediator) {
-        registerICIMainOn(key as Channels);
+        registerICIMainOn(key as Channel);
     }
 
     /**
      * register an ICPMain.on call.
      * @param {Channel} channel A channel/method
      */
-    function registerICIMainOn(channel: Channels): void {
+    function registerICIMainOn(channel: Channel): void {
         ipcMain.on(channel, (event, args) => {
 
             // Cast to any so we can spread args in the method call. This is save, the arguments

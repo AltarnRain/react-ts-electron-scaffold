@@ -10,7 +10,7 @@
  */
 
 import { contextBridge, ipcRenderer } from "electron";
-import { Channels } from "../Types/Channels";
+import { Channel } from "../Types/Channel";
 import { IApi } from "../Types/IApi";
 import { ResponseModel } from "../Types/ResponseModel";
 
@@ -21,15 +21,15 @@ const api: IApi = {
 
 // Use the context bridge to define 'api' on the window object in the browser. Assigning directly to the window object in here
 // does not work because the window object when this file loads is NOT the window object in the browser.
-contextBridge.exposeInMainWorld("api", api);
+contextBridge.exposeInMainWorld("40a05040-68be-48b0-859d-cd50b8ad6efa", api);
 
 /**
  * send a request object and response immediately.
- * @param {Channels} channel A channel
+ * @param {Channel} channel A channel
  * @param {T} requestModel An optional request model
  * @returns {Prmose<ResponseModel<T>>} A promise with a response model.
  */
-export function sendAndReceive<T>(channel: Channels, ...args: any): Promise<ResponseModel<T>> {
+export function sendAndReceive(channel: Channel, ...args: any): Promise<ResponseModel<any>> {
     return new Promise((resolve) => {
         // Register a once listen action to handle the reply.
         ipcRenderer.once(channel, (_, responseModel) => resolve(responseModel));

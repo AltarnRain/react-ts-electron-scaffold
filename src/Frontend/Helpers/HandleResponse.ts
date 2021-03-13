@@ -4,12 +4,14 @@
  * See LICENSE.MD.
  */
 
-import { ResponseModel } from "../../Types/ResponseModel";
-
 /**
  * Module:          HandleResponse
  * Responsibility:  Simple response handler.
  */
+
+import { ResponseModel } from "../../Types/ResponseModel";
+import { SuccesResponseModel } from "../../Types/SuccesResponseModel";
+import { ErrorResponseModel } from "../../Types/ErrorResponseModel";
 
 /**
  * handleResponse
@@ -22,11 +24,19 @@ export function handleResponse<R>(
     succes: (value: R) => void,
     error?: (error: string) => void): void {
 
-    if (response.success) {
+    if (isSucces(response)) {
         succes(response.model);
+    } else if (isError(response) && typeof error === "function") {
+        error(response.error);
     } else {
-        if (typeof error === "function") {
-            error(response.error as string);
-        }
+        // Do nothing.
     }
+}
+
+function isSucces<R>(value: ResponseModel<R>): value is SuccesResponseModel<R> {
+    return value && value.succes;
+}
+
+function isError(value: ResponseModel<any>): value is ErrorResponseModel {
+    return value && !value.succes;
 }
