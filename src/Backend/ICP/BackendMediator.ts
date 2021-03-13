@@ -7,13 +7,13 @@ import { listFolderContent } from "../Drive/ListFolderContent";
 export const BackendMediator: IMediator = {
     listDrives: async (): Promise<ResponseModel<string[]>> => {
         return {
-            success: true,
+            succes: true,
             model: await listDrives(),
         };
     },
     listContent: async (folder: string): Promise<ResponseModel<ContentModel[]>> => {
         return {
-            success: true,
+            succes: true,
             model: await listFolderContent(folder),
         };
     }

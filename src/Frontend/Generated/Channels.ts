@@ -1,3 +1,3 @@
 import type { Channel } from "../../Types/Channel";
 
-export const Channels: Channel[] = ["doCall","multiple"];
+export const Channels: Channel[] = [];
