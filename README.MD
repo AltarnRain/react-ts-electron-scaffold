@@ -110,4 +110,4 @@ const configuration = configure
 ```
 
 To add a packages call `.registerModule'. The first parameter is the name of the package. The second is the package's location in node_modules.
-> NOTE: The `ConfigureRequire` class automatically adds this to a path.
+> NOTE: The `ConfigureRequire` class automatically adds node_modules to a path.
