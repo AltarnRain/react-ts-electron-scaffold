@@ -15,12 +15,13 @@ Check ./src/Frontend/App.tsx for an example.
 
 # Design principles
 
-* All calls are async from the front to the backend are async and should always return a Promise.
-* Every call to the backend gives a response. It is up to the frontend to deal with this.
+* All calls are async to the backend are async.
+* Every call to the backend gives a response.
 * The frontend cannot access anything on your machine.
 * The backend can access things on your machine.
 * No WebPack or bundling. For the frontend, RequireJS is used.
   * I created a configuration class to make things a little easier.
+
 
 # Installation
 npm install
