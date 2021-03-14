@@ -60,6 +60,6 @@ describe("configure require tests", () => {
 
         const maps = map["*"];
 
-        expect(maps[validName]).toBe(myModule3);
+        expect(maps[myModule3]).toBe(validName);
     });
 });
