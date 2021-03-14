@@ -7,24 +7,33 @@ The following is installed and configured:
 * Jest
 * Ts-Jest
 * Requirejs
+* ts-morph
 
-Communication from the frontend to the backend is handled exclusively via ICP. I created a mediator object that is kept in sync via a shared interface. Simply put, you can do a call and get a response and you'll know exactly what you're going to get back.
+Communication from the frontend to the backend is handled exclusively via ICP. 
 
 Check ./src/Frontend/App.tsx for an example.
+
+# Design principles
+
+* All calls are async from the front to the backend are async and should always return a Promise.
+* Every call to the backend gives a response. It is up to the frontend to deal with this.
+* The frontend cannot access anything on your machine.
+* The backend can access things on your machine.
+* Everything thing is done using ICP.
+* No WebPack or bundling. For the frontend, RequireJS is used.
 
 # Installation
 npm install
 
-# Running
-Run bb.cmd and bf.cmd
-npm start
-
 # Developing
-Run BB.cmd and BF.cmd
+Run BB.cmd
+ * Builds the backend and compiles on any file change
 
-This will start the typescript compiler for the backend and frontend in watch mode. I prefer having these side by side in the same terminal. Now you can code to your hearts content.
+Run BF.cmd
+ * Builds the frontend and compiles on any file change.
 
-Be sure to do a force reload in your electron application by pressing CTRL-R.
+Run Generate.cmd
+  * Generates code. Run this when you add a call to IMediator.
 
 # Debugging
 ## Application
@@ -45,8 +54,10 @@ This is handled by ts-jest and jest.
 ## Src
 Contains all source code and typings.
 
+This setup is split into two seperate project. Frontend and Backend. These projects can ONLY SHARE TYPES defined a D.TS files. 
+
 ### Frontend
-Contains all the front end code as well as a tsconfig.json file with output AMD. That's because require is used to resolve modules and it only supports AMD. I purposely did not install Webpack, I don't see the point with this setup.
+Contains all the front end code as well as a tsconfig.json file with output AMD. That's because Requirejs is used to resolve modules and it only supports AMD. I purposely did not install Webpack, I don't see the point with this setup and its weighs a ton in JS content.
 
 ### Backend
 Contains all the backend code as well as a tsconfig.json file with output CommonJS.
@@ -63,10 +74,10 @@ It is very easy to make an unsafe electron application by letting node functiona
 
 And API object is setup which exposes a `sendAndreceive` method that uses ICP to communicate.
 
-This method is wrapped in a `FrontendMediator` class which derives from the `IMediator` interface.
+This method is wrapped in a `FrontendMediator` object which is generated using the calls/channels defined in `IMediator` interface. 
 
 The backend also has a mediator class called `BackendMediator` and it also derives from the `IMediator` interface. With a bit of JS magic it is possible
-to link these classes together. This means every call to the backend is done knowing which parameters are required and what kind of response you're going to get.
+to link these objects together. This means every call to the backend is done knowing which parameters are required and what kind of response you're going to get.
 
 ## Communicating with the backend.
 Every call to the backend should be done using the FrontendMediator object. This object's content is generated using an array that, itself is generated.
