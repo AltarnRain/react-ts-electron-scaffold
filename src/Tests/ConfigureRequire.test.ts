@@ -47,6 +47,7 @@ describe("configure require tests", () => {
 
         const validName = "mymodule3" + "_" + configure.uniqueIdentifier;
         expect(paths[validName]).toBeDefined();
+        expect(paths[validName].indexOf(myPath3)).toBeGreaterThan(0);
         expect(configuration.map).toBeDefined();
 
         const map = configuration.map as {
