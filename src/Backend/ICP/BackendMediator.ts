@@ -11,20 +11,21 @@
 
 import { ResponseModel } from "../../Types/ResponseModel";
 import { IMediator as IMediator } from "../../Types/IMediator";
+import { listDrives } from "../Drive/ListDrives";
+import { ContentModel } from "../../Types/ContentModel";
+import { listFolderContent } from "../Drive/ListFolderContent";
 
 export const BackendMediator: IMediator = {
-    doCall: async(param1: string, param2: number): Promise<ResponseModel<string>> => {
-        const m = `${param1}_${param2}`;
-
+    listDrives: async (): Promise<ResponseModel<string[]>> => {
         return {
             succes: true,
-            model: m,
+            model: await listDrives(),
         };
     },
-    multiple: async(a, b): Promise<ResponseModel<number>> => {
+    listContent: async (folder: string): Promise<ResponseModel<ContentModel[]>> => {
         return {
             succes: true,
-            model: a * b,
+            model: await listFolderContent(folder),
         };
     }
 };

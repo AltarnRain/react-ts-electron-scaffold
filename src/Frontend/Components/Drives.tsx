@@ -6,8 +6,8 @@
 
 import React, { ReactElement, useEffect, useState } from "react";
 import { Button } from "reactstrap";
-import { FrontendMediator } from "../Helpers/FrontendMediator";
-import { handleResponse } from "../Helpers/HandleResponse";
+import { FrontendMediator } from "../ICP/FrontendMediator";
+import { handleResponse } from "../ICP/HandleResponse";
 import { ColumnDisplay } from "./ColumnDisplay";
 
 /**

@@ -16,24 +16,12 @@ const configure = new ConfigureRequire();
 const configuration = configure
     .registerModule("react", "react/umd/react.development")
     .registerModule("react-dom", "react-dom/umd/react-dom.development")
+    .registerModule("popper.js", "popper.js/dist/umd/popper")
+    .registerModule("react-popper", "react-popper/dist/index.umd")
+    .registerModule("reactstrap", "reactstrap/dist/reactstrap")
     .getConfig();
 
 // Configure packages.
-requirejs.config(({
-    paths: {
-        "react": `${nodeFolder}react/umd/react.development`,
-        "react-dom": `${nodeFolder}react-dom/umd/react-dom.development`,
-        "popper": `${nodeFolder}popper.js/dist/umd/popper`,
-        "react-popper": `${nodeFolder}react-popper/dist/index.umd`,
-        "reactstrap": `${nodeFolder}reactstrap/dist/reactstrap`,
-    },
-    map: {
-        "*": {
-            // Map popper.js to 'popper. Paths do not support a name with a period.'
-            "popper.js": "popper",
-        },
-    }
-}));
 requirejs.config(configuration);
 
 // Require start and get things going!
