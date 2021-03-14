@@ -19,8 +19,8 @@ Check ./src/Frontend/App.tsx for an example.
 * Every call to the backend gives a response. It is up to the frontend to deal with this.
 * The frontend cannot access anything on your machine.
 * The backend can access things on your machine.
-* Everything thing is done using ICP.
 * No WebPack or bundling. For the frontend, RequireJS is used.
+  * I created a configuration class to make things a little easier.
 
 # Installation
 npm install
@@ -88,3 +88,25 @@ This updates ./src/Frontend/Generated/Channels.ts and if you're using bf TypeScr
 Channels.ts exports an array of every key in IMediator. Since FrontendMediator only calls the Backend using a channel and some parameters this code can be generated just fine.
 
 It's the Backend that does the heavy lifting.
+
+# Adding packages
+
+## Frontend
+
+Frontend packages have to be AMD or UMD. CommonJS is not supported.
+
+You add packages using npm install as usual. To make them work you have to do a bit of configuration.
+
+Go to ./src/Frontend/Main.ts
+
+React and react-dom are already configured.
+
+```ts
+const configuration = configure
+    .registerModule("react", "react/umd/react.development")
+    .registerModule("react-dom", "react-dom/umd/react-dom.development")
+    .getConfig();
+```
+
+To add a packages call `.registerModule'. The first parameter is the name of the package. The second is the package's location in node_modules.
+> NOTE: The `ConfigureRequire` class automatically adds this to a path.
