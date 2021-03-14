@@ -15,7 +15,7 @@ Check ./src/Frontend/App.tsx for an example.
 
 # Design principles
 
-* All calls are async to the backend are async.
+* All calls to the backend are async.
 * Every call to the backend gives a response.
 * The frontend cannot access anything on your machine.
 * The backend can access things on your machine.
