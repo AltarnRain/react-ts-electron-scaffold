@@ -69,7 +69,7 @@ export class ConfigureRequire {
 
                     // Add a path
                     configure.paths[usableModuleName] = module.path;
-                    map[usableModuleName] = module.name;
+                    map[module.name] = usableModuleName;
                 } else {
                     configure.paths[module.name] = module.path;
                 }
