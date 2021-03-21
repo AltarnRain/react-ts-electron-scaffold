@@ -1,72 +1,72 @@
 {
-  "name": "react-ts-electron-scaffold",
-  "version": "1.0.0",
-  "description": "Base for electron apps",
-  "productName": "base electron app.",
-  "main": "./js/Backend/Main.js",
-  "author": "Onno Invernizzi",
-  "license": "MIT",
-  "keywords": [],
-  "scripts": {
-    "start": "electron ./js/Backend/Main.js",
-    "test": "jest --watch --rootDir=./src/Tests",
-    "lint": "eslint ./src/**/*",
-    "make": "electron-forge make",
-    "publish": "electron-forge publish"
-  },
-  "devDependencies": {
-    "@electron-forge/cli": "^6.0.0-beta.54",
-    "@electron-forge/maker-squirrel": "^6.0.0-beta.54",
-    "@types/node": "14.14.31",
-    "@types/react": "17.0.2",
-    "@types/react-dom": "17.0.1",
-    "@types/requirejs": "2.1.32",
-    "@typescript-eslint/eslint-plugin": "4.10.0",
-    "@typescript-eslint/parser": "4.10.0",
-    "electron": "12.0.0",
-    "eslint": "7.21.0",
-    "eslint-plugin-react": "7.22.0",
-    "jest": "26.6.3",
-    "ts-jest": "26.5.2",
-    "ts-morph": "^10.0.1",
-    "typescript": "4.2.2"
-  },
-  "dependencies": {
-    "react": "17.0.1",
-    "react-dom": "17.0.1",
-    "requirejs": "2.3.6"
-  },
-  "jest": {
-    "preset": "ts-jest",
-    "testEnvironment": "node"
-  },
-  "config": {
-    "forge": {
-      "packagerConfig": {
-        "asar": false
-      },
-      "makers": [
-        {
-          "name": "@electron-forge/maker-squirrel",
-          "config": {
-            "name": "myapp"
-          }
-        },
-        {
-          "name": "@electron-forge/maker-zip",
-          "platforms": [
-            "darwin"
-          ]
-        },
-        {
-          "name": "@electron-forge/maker-deb",
-          "config": {}
-        },
-        {
-          "name": "@electron-forge/maker-rpm",
-          "config": {}
+    "name": "react-ts-electron-scaffold",
+    "version": "1.0.0",
+    "description": "Base for electron apps",
+    "productName": "base electron app.",
+    "main": "./js/Backend/Main.js",
+    "author": "Onno Invernizzi",
+    "license": "MIT",
+    "keywords": [],
+    "scripts": {
+        "start": "electron ./js/Backend/Main.js",
+        "test": "jest --watch --rootDir=./src/Tests",
+        "lint": "eslint ./src/**/*",
+        "make": "electron-forge make",
+        "publish": "electron-forge publish"
+    },
+    "devDependencies": {
+        "@electron-forge/cli": "^6.0.0-beta.54",
+        "@electron-forge/maker-squirrel": "^6.0.0-beta.54",
+        "@types/node": "14.14.31",
+        "@types/react": "17.0.2",
+        "@types/react-dom": "17.0.1",
+        "@types/requirejs": "2.1.32",
+        "@typescript-eslint/eslint-plugin": "4.10.0",
+        "@typescript-eslint/parser": "4.10.0",
+        "electron": "12.0.0",
+        "eslint": "7.21.0",
+        "eslint-plugin-react": "7.22.0",
+        "jest": "26.6.3",
+        "ts-jest": "26.5.2",
+        "ts-morph": "^10.0.1",
+        "typescript": "4.2.2"
+    },
+    "dependencies": {
+        "react": "17.0.1",
+        "react-dom": "17.0.1",
+        "requirejs": "2.3.6"
+    },
+    "jest": {
+        "preset": "ts-jest",
+        "testEnvironment": "node"
+    },
+    "config": {
+        "forge": {
+            "packagerConfig": {
+                "asar": false
+            },
+            "makers": [
+                {
+                    "name": "@electron-forge/maker-squirrel",
+                    "config": {
+                        "name": "myapp"
+                    }
+                },
+                {
+                    "name": "@electron-forge/maker-zip",
+                    "platforms": [
+                        "darwin"
+                    ]
+                },
+                {
+                    "name": "@electron-forge/maker-deb",
+                    "config": {}
+                },
+                {
+                    "name": "@electron-forge/maker-rpm",
+                    "config": {}
+                }
+            ]
         }
-      ]
     }
-  }
 }
