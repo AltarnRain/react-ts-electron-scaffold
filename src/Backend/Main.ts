@@ -15,7 +15,7 @@ import { registerICPMainCalls } from "./ICP/RegisterICPMainCalls";
 
 async function createWindow(): Promise<void> {
 
-   const preload = path.join(app.getAppPath(), "../Backend/Preload.js");
+    const preload = path.join(__dirname, "./Preload.js");
 
     const win = new BrowserWindow({
         width: 1280,
@@ -32,7 +32,7 @@ async function createWindow(): Promise<void> {
     // Uncomment line below to toggle the dev tools when the application starts.
     // win.webContents.toggleDevTools();
 
-    await win.loadFile("index.html");
+    await win.loadFile(path.join(__dirname, "../index.html"));
 }
 
 // when the app is ready electron is in a position to create the window.
