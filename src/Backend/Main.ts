@@ -15,6 +15,8 @@ import { registerICPMainCalls } from "./ICP/RegisterICPMainCalls";
 
 async function createWindow(): Promise<void> {
 
+    // Note on __dirname. This works when developing and after packaging/publishing
+    // The preload path HAS TO BE a fully specified path. Relative paths do NOT work.
     const preload = path.join(__dirname, "./Preload.js");
 
     const win = new BrowserWindow({
