@@ -8,6 +8,7 @@ The following is installed and configured:
 * Ts-Jest
 * Requirejs
 * ts-morph
+* electron-forge
 
 Communication from the frontend to the backend is handled exclusively via ICP. 
 
@@ -110,3 +111,16 @@ const configuration = configure
 
 To add a packages call `.registerModule'. The first parameter is the name of the package. The second is the package's location in node_modules.
 > NOTE: The `ConfigureRequire` class automatically adds this to a path.
+
+# Packaging and publishing
+NPM script have been configured for this. Note that 'asar' is not used because RequestJS cannot load the 'main.js' file otherwise.
+
+## Make
+Run: npm run make
+
+This will create your app in the /out folder.
+
+## Publish
+Run: npm run publish
+
+This will create your app in the /out folder and generate an installer.
