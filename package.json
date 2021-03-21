@@ -1,7 +1,7 @@
 {
   "name": "react-ts-electron-scaffold",
   "version": "1.0.0",
-  "Description": "Base for electron apps",
+  "description": "Base for electron apps",
   "productName": "base electron app.",
   "main": "./js/Backend/Main.js",
   "author": "Onno Invernizzi",
@@ -41,7 +41,9 @@
   },
   "config": {
     "forge": {
-      "packagerConfig": {},
+      "packagerConfig": {
+        "asar": false
+      },
       "makers": [
         {
           "name": "@electron-forge/maker-squirrel",
