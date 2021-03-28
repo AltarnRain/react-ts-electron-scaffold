@@ -4,7 +4,9 @@
   "description": "",
   "main": "./js/Backend/Main.js",
   "scripts": {
-    "start": "electron ./js/Backend/Main.js",
+    "start": "node ./NodeUtils/command-init --watch",
+    "build": "node ./NodeUtils/command-init",
+    "app": "electron ./js/Backend/Main.js",
     "test": "jest --watch --rootDir=./src/Tests",
     "lint": "eslint ./src/**/*"
   },
