@@ -8,7 +8,9 @@
     "license": "MIT",
     "keywords": [],
     "scripts": {
-        "start": "electron ./js/Backend/Main.js",
+        "start": "node ./NodeUtils/command-develop --watch",
+        "build": "node ./NodeUtils/command-develop",
+        "app": "electron ./js/Backend/Main.js",
         "test": "jest --watch --rootDir=./src/Tests",
         "lint": "eslint ./src/**/*",
         "make": "electron-forge make",
