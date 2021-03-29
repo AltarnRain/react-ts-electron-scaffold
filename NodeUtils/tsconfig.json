@@ -7,6 +7,6 @@
         "forceConsistentCasingInFileNames": true,
         "inlineSourceMap": true,
         "moduleResolution": "Node",
-        "module": "CommonJS"
+        "module": "CommonJS",
     }
 }
