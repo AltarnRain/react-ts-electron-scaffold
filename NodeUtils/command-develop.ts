@@ -22,7 +22,7 @@ async function commandWatch(): Promise<void> {
             cwd: rootDir,
             args: [electronEntryPoint],
         }),
-        tscDirectory("Backend", srcBackendDir, true),
+        tscDirectory("Backend ", srcBackendDir, true),
         tscDirectory("Frontend", srcFrontendDir, true),
     ];
     await Promise.race(processes.map((p) => p.toPromise()));
@@ -50,21 +50,21 @@ function commandBuild(): Promise<void> {
  * @returns {NodeCliProcess}
  */
 function tscDirectory(label: string, directory: string, watch = false): NodeCliProcess {
+    const args = ["--pretty", "--project", directory];
+    if (watch) {
+        args.push("--watch");
+    }
     return executeNodeCli({
         filePath: tscCliPath,
-        cwd: directory,
-        args: watch ? ["--watch"] : undefined,
+        args,
         format: "line",
         onData: (event) => {
-            console.log(`TSC ${label}:`, event.data);
+            if (event.data) {
+                console.log(`TSC ${label} |`, event.data);
+            }
         }
     });
 }
-
-// process.on("SIGINT", function() {
-//     console.log("Caught interrupt signal");
-//     process.exit();
-// });
 
 if (process.argv[2] === "--watch") {
     commandWatch();
