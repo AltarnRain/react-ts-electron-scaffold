@@ -8,8 +8,8 @@
     "license": "MIT",
     "keywords": [],
     "scripts": {
-        "start": "node ./NodeUtils/command-develop --watch",
-        "build": "node ./NodeUtils/command-develop",
+        "start": "node ./NodeUtils/command-init --watch",
+        "build": "node ./NodeUtils/command-init",
         "app": "electron ./js/Backend/Main.js",
         "test": "jest --watch --rootDir=./src/Tests",
         "lint": "eslint ./src/**/*",
