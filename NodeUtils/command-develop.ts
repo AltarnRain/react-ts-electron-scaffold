@@ -61,11 +61,6 @@ function tscDirectory(label: string, directory: string, watch = false): NodeCliP
     });
 }
 
-// process.on("SIGINT", function() {
-//     console.log("Caught interrupt signal");
-//     process.exit();
-// });
-
 if (process.argv[2] === "--watch") {
     commandWatch();
 } else {
