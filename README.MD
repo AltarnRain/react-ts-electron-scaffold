@@ -27,15 +27,11 @@ Check ./src/Frontend/App.tsx for an example.
 npm install
 
 # Developing
-Run BB.cmd
- * Builds the backend and compiles on any file change
-
-Run BF.cmd
- * Builds the frontend and compiles on any file change.
+Run npm start.
+  A process will be spawned to compile the front and backend code.
 
 Run Generate.cmd
   * Generates code. Run this when you add a call to IMediator.
-
 # Debugging
 ## Application
 Pick the 'Debug app' configuration and press F5. This will run the main process in debugmode and attach a debugger for the front end.
